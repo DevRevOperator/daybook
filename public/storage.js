@@ -28,7 +28,7 @@ export async function initializeStorage() {
 
 function showSignIn() {
   const app = document.querySelector('#app');
-  app.innerHTML = `<main class="auth-page"><section class="auth-card"><span class="auth-brand">DAYBOOK</span><h1>A little space for your day.</h1><p>Sign in to open your private planner.</p><form id="cloud-sign-in"><label class="field"><span>Email address</span><input type="email" name="email" required autocomplete="email" placeholder="you@example.com"></label><button class="primary" type="submit">Email me a sign-in link</button></form><p class="auth-message" role="status" aria-live="polite"></p><p class="hint">Open the link in this browser to finish signing in.</p></section></main>`;
+  app.innerHTML = `<main class="auth-page"><section class="auth-card"><span class="auth-brand">DAYBOOK</span><h1>A little space for your day.</h1><p>This is a private planner. Sign in with your approved email.</p><form id="cloud-sign-in"><label class="field"><span>Email address</span><input type="email" name="email" required autocomplete="email" placeholder="you@example.com"></label><button class="primary" type="submit">Email me a sign-in link</button></form><p class="auth-message" role="status" aria-live="polite"></p><p class="hint">Open the link in this browser to finish signing in. New accounts cannot register here.</p></section></main>`;
   return new Promise(resolve => {
     const form = app.querySelector('form');
     form.onsubmit = async event => {
@@ -37,7 +37,7 @@ function showSignIn() {
       button.disabled = true;status.textContent = 'Sending your sign-in link…';
       const redirect = new URL('./', location.href);redirect.search = '';redirect.hash = '';
       try {
-        const { error } = await client.auth.signInWithOtp({ email: form.elements.email.value.trim(), options: { shouldCreateUser: true, emailRedirectTo: redirect.href } });
+        const { error } = await client.auth.signInWithOtp({ email: form.elements.email.value.trim(), options: { shouldCreateUser: false, emailRedirectTo: redirect.href } });
         if (error) throw error;
         status.textContent = 'Check your email. Your sign-in link is on its way.';
       } catch (error) { status.textContent = error.message; }
