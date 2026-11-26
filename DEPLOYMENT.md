@@ -4,7 +4,9 @@ The code supports local mode and a static cloud build. Deploy only to the verifi
 
 ## Status
 
-Cloud source, database migration, access checks, Pages workflow, and migration verification are prepared. Creating a repository, provisioning Supabase, production deployment, and importing the tasks require the user's personal accounts to be authenticated and verified. Preparing this file does not mean those steps have been completed.
+The app is deployed at https://devrevoperator.github.io/daybook/ from the verified personal repository https://github.com/DevRevOperator/daybook. Supabase project `qifdhtpgkgkdyvktnurq` belongs to the owner's `Daybook Personal` Free organization in Mumbai. The schema, private email allowlist, and exact authentication redirect are configured. Anonymous planner and backup access is rejected by the live database.
+
+The initial owner planner has been imported with an insert-only operation that refuses to replace an existing planner. Database JSON equality and the local migration verifier confirmed the imported state. Recovery files remain under ignored `.data/migration/`. The owner's first emailed sign-in, authenticated browser reload/export checks, and the Mac shortcut switchover remain pending; the existing local companion is still running until those checks finish.
 
 ## Personal account checks
 

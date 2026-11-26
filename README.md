@@ -4,7 +4,7 @@ A daily planner inspired by the uncluttered TeuxDeux workflow, with a local Mac 
 
 ## Cloud deployment
 
-See [DEPLOYMENT.md](DEPLOYMENT.md) for personal-account verification, Supabase setup, Pages deployment, and migration checks. The cloud code is prepared; the actual personal accounts, production URL, and task import still need to be verified before switching over.
+The hosted app is [Daybook](https://devrevoperator.github.io/daybook/), published from the owner's verified personal repository. Sign in with the approved account email. See [DEPLOYMENT.md](DEPLOYMENT.md) for Supabase setup, deployment, and migration checks.
 
 `npm run build` builds only the public interface into `dist/`, using `cloud.config.json` for the Supabase URL and publishable key. The Pages workflow checks the personal repository owner before deployment. Planner data, backups, credentials, proprietary fonts, and local design concepts are excluded from Git and the build.
 
