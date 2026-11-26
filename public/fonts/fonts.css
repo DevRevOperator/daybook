@@ -1,0 +1,7 @@
+@font-face { font-family: 'Chip Text'; font-style: normal; font-weight: 400; font-display: swap; src: url('./ChipText-Regular.otf') format('opentype'); }
+@font-face { font-family: 'Chip Text'; font-style: normal; font-weight: 500; font-display: swap; src: url('./ChipText-Medium.otf') format('opentype'); }
+@font-face { font-family: 'Chip Text'; font-style: normal; font-weight: 600; font-display: swap; src: url('./ChipText-Semibold.otf') format('opentype'); }
+@font-face { font-family: 'Chip Text'; font-style: normal; font-weight: 700; font-display: swap; src: url('./ChipText-Bold.otf') format('opentype'); }
+@font-face { font-family: 'Chip Text'; font-style: italic; font-weight: 400; font-display: swap; src: url('./ChipText-Italic.otf') format('opentype'); }
+@font-face { font-family: 'Chip Display'; font-style: normal; font-weight: 600; font-display: swap; src: url('./ChipDisp-Semibold.otf') format('opentype'); }
+@font-face { font-family: 'Chip Display'; font-style: normal; font-weight: 700; font-display: swap; src: url('./ChipDisp-Bold.otf') format('opentype'); }

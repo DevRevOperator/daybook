@@ -1,0 +1,8 @@
+{
+  "mode": "cloud",
+  "githubOwner": "YOUR_PERSONAL_GITHUB_USERNAME",
+  "githubOwnerId": 0,
+  "repository": "daybook",
+  "supabaseUrl": "https://YOUR_PROJECT.supabase.co",
+  "publishableKey": "sb_publishable_YOUR_PUBLIC_BROWSER_KEY"
+}

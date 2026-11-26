@@ -1,0 +1,18 @@
+.data/
+node_modules/
+.DS_Store
+*.log
+
+Daybook Capture.app/
+dist/
+.env
+.env.*
+!.env.example
+.supabase/
+supabase/.temp/
+public/vendor/
+public/fonts/Chip*.otf
+concepts/
+*.sqlite*
+*.pem
+*.key

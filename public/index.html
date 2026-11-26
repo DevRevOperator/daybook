@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#3158c9">
+  <meta name="description" content="A quiet daily planner. Your tasks, your days, your Mac.">
+  <title>Daybook</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%233158c9'/%3E%3Cpath d='M20 16h13c20 0 20 32 0 32H20z' fill='none' stroke='white' stroke-width='6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./fonts/fonts.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <aside id="preferences" class="preferences-panel" aria-label="Preferences" hidden></aside>
+  <button class="preferences-backdrop" aria-label="Close preferences" data-action="close-preferences" tabindex="-1" hidden></button>
+  <div id="app"><div class="loading">Opening your planner…</div></div>
+  <dialog id="dialog" aria-label="Planner dialog"></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <input type="file" id="import-file" accept=".json,application/json" hidden>
+</body>
+</html>
