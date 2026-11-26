@@ -6,7 +6,9 @@ The code supports local mode and a static cloud build. Deploy only to the verifi
 
 The app is deployed at https://devrevoperator.github.io/daybook/ from the verified personal repository https://github.com/DevRevOperator/daybook. Supabase project `qifdhtpgkgkdyvktnurq` belongs to the owner's `Daybook Personal` Free organization in Mumbai. The schema, private email allowlist, and exact authentication redirect are configured. Anonymous planner and backup access is rejected by the live database.
 
-The initial owner planner has been imported with an insert-only operation that refuses to replace an existing planner. Database JSON equality and the local migration verifier confirmed the imported state. Recovery files remain under ignored `.data/migration/`. Google sign-in is configured in the personal Google Cloud project `daybook-personal-20261126` and enabled in Supabase. Only basic identity scopes are configured; the OAuth secret stays in Supabase. The first authenticated browser reload/export checks remain pending. The existing local companion is still running until those checks finish.
+The initial owner planner has been imported with an insert-only operation that refuses to replace an existing planner. Google sign-in is configured in the personal Google Cloud project `daybook-personal-20261126` and enabled in Supabase. Only basic identity scopes are configured; the OAuth secret stays in Supabase. The approved Google identity linked to the existing owner account. Authenticated browser reload and cloud export checks passed, with all original tasks, lists, groups, schedules, and preferences preserved. A fresh local export also matched the cloud planner before cutover.
+
+The installed Mac companion and launcher now target the hosted app. Global shortcut registration succeeded, and the hosted quick-capture destination was verified. Its default browser may require its own first sign-in. The original local app, SQLite database, exports, and unsaved native capture draft remain available as recovery material under ignored local storage. No local planner data or recovery files are published.
 
 ## Personal account checks
 
