@@ -4,8 +4,10 @@
 .auth-brand { color: var(--accent); font-family: 'Chip Display', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 1px; }
 .auth-card h1 { font-family: 'Chip Display', sans-serif; font-size: 36px; line-height: 1.15; margin: 30px 0 14px; }
 .auth-card p { line-height: 1.6; color: var(--muted); }
-.auth-card form { margin-top: 28px; }
-.auth-card form button { width: 100%; margin-top: 8px; }
+.auth-card > p:not(.hint) { font-size: 16px; }
+.google-sign-in { width: 100%; min-height: 44px; margin-top: 24px; padding: 12px; display: flex; align-items: center; justify-content: center; gap: 12px; background: #fff; color: #1f1f1f; border: 1px solid #747775; border-radius: 6px; font-size: 14px; font-weight: 500; }
+.google-sign-in:hover { background: #f2f6fc; }
+.google-sign-in svg { width: 20px; height: 20px; flex-shrink: 0; }
 .auth-message { min-height: 24px; }
 .backup-row { display: flex; flex-direction: column; gap: 5px; width: 100%; padding: 12px 0; text-align: left; border-bottom: 1px solid var(--line); font-size: 13px; }
 .backup-row small { color: var(--muted); }

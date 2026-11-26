@@ -16,7 +16,7 @@ if (!/^[a-z\d](?:[a-z\d-]{0,37}[a-z\d])?$/i.test(config.githubOwner || '') || !N
 await rm(out, { recursive: true, force: true });
 await mkdir(join(out, 'fonts'), { recursive: true });
 await mkdir(join(out, 'vendor'), { recursive: true });
-for (const name of ['index.html','styles.css','app.js','model.js','preferences.js','storage.js','cloud-store.js']) await copyFile(join(root,'public',name),join(out,name));
+for (const name of ['index.html','styles.css','app.js','model.js','preferences.js','storage.js','cloud-store.js','auth.js']) await copyFile(join(root,'public',name),join(out,name));
 for (const name of ['font-0.ttf','font-1.ttf','font-2.ttf','font-3.ttf','font-4.ttf','DM-Sans-OFL.txt','Barlow-Condensed-OFL.txt']) await copyFile(join(root,'public/fonts',name),join(out,'fonts',name));
 await writeFile(join(out,'fonts/fonts.css'), `
 @font-face{font-family:'Chip Text';font-style:normal;font-weight:400;font-display:swap;src:url('./font-2.ttf') format('truetype')}

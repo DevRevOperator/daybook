@@ -6,7 +6,7 @@ The code supports local mode and a static cloud build. Deploy only to the verifi
 
 The app is deployed at https://devrevoperator.github.io/daybook/ from the verified personal repository https://github.com/DevRevOperator/daybook. Supabase project `qifdhtpgkgkdyvktnurq` belongs to the owner's `Daybook Personal` Free organization in Mumbai. The schema, private email allowlist, and exact authentication redirect are configured. Anonymous planner and backup access is rejected by the live database.
 
-The initial owner planner has been imported with an insert-only operation that refuses to replace an existing planner. Database JSON equality and the local migration verifier confirmed the imported state. Recovery files remain under ignored `.data/migration/`. The owner's first emailed sign-in, authenticated browser reload/export checks, and the Mac shortcut switchover remain pending; the existing local companion is still running until those checks finish.
+The initial owner planner has been imported with an insert-only operation that refuses to replace an existing planner. Database JSON equality and the local migration verifier confirmed the imported state. Recovery files remain under ignored `.data/migration/`. Google sign-in is configured in the personal Google Cloud project `daybook-personal-20261126` and enabled in Supabase. Only basic identity scopes are configured; the OAuth secret stays in Supabase. The first authenticated browser reload/export checks remain pending. The existing local companion is still running until those checks finish.
 
 ## Personal account checks
 
@@ -24,9 +24,24 @@ Use a personal Supabase organization and a new free project, preferably in an In
 
 1. Apply `supabase/migrations/202611260001_daybook.sql` through the project's SQL editor or migration tooling.
 2. Add the owner's login email, lowercase, to `daybook_private.allowed_emails` using the SQL editor. Do not commit the actual allowlist or user data.
-3. Enable email authentication. Set the Site URL and allowed redirect URL to the final Pages URL, including the repository path and trailing slash.
-4. Register or invite the owner's Auth account through trusted administration, then disable new-user signup in Supabase. The client uses `shouldCreateUser: false`; the server setting enforces this even for direct API calls. All planner RPCs require a confirmed email on the private allowlist. Retired accounts must be banned, with planner and backup ownership transferred transactionally before access changes are finalized. Never commit real email addresses or migration data. For a personal pilot, Supabase's default mail delivery can only deliver to allowed organization-member addresses; configure custom SMTP before broader access.
+3. Set the Site URL and allowed redirect URL to the final Pages URL, including the repository path and trailing slash.
+4. Register and verify the owner's Auth account through trusted administration, then disable new-user signup in Supabase. All planner RPCs require a confirmed email on the private allowlist. Retired accounts must be banned, with planner and backup ownership transferred transactionally before access changes are finalized. Never commit real email addresses or migration data.
 5. Build using `npm ci` and `npm run build`. Enable GitHub Pages with GitHub Actions as the source.
+
+### Google sign-in
+
+Create a dedicated project in the owner's personal Google Cloud account, with no company organization. Configure Google Auth Platform with only the basic `openid`, email, and profile scopes, and add the approved account as a test user while the app is in testing.
+
+Create a **Web application** OAuth client with:
+
+- Authorized JavaScript origin: `https://devrevoperator.github.io`
+- Authorized redirect URI: `https://qifdhtpgkgkdyvktnurq.supabase.co/auth/v1/callback`
+
+Store the client ID and client secret in **Supabase → Authentication → Sign In / Providers → Google**, then enable the provider. Keep **Skip nonce checks** and **Allow users without an email** off. Never put the OAuth secret in source, GitHub Actions, `cloud.config.json`, the Pages build, or a screenshot. The frontend needs only the existing publishable Supabase key.
+
+The browser uses PKCE, exchanges the callback code through the Supabase SDK, and persists and refreshes the Supabase session. Google sign-in uses no sign-in email and does not request offline Google access. The approved, confirmed email identity links to the matching Google identity on the existing account, preserving its user ID and planner. Verify this after the first Google login. Keep Supabase new-user signup disabled and the database allowlist in place; the Google button is not an authorization boundary.
+
+Before switching daily use, verify the approved login, callback failure recovery, the unchanged account ID, saved tasks after reload, and a cloud export against the migration backup. A new unapproved account must remain unable to register or access planner RPCs. Email delivery is not needed for routine Google login; custom SMTP is only needed if emailed sign-in or recovery is offered separately.
 
 The database stores one versioned planner document per account, preserving the existing task IDs and structure. SQL functions serialize writes and reject stale revisions. Capture retries are idempotent. Browser clients can read only their own rows and cannot write tables directly. Scheduling and rollover use the stored planner timezone, rather than the deployment machine's date.
 
